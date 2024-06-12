@@ -1,5 +1,7 @@
 import express, { Application, Request, Response } from "express";
-require("./model/index");
+import * as dotenv from "dotenv";
+dotenv.config();
+require("./Database/connection");
 const app: Application = express();
 const PORT: number = 8000;
 app.get("/", (req: Request, res: Response) => {
