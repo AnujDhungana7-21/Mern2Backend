@@ -3,7 +3,6 @@ import {
   Column,
   Model,
   DataType,
-  PrimaryKey,
 } from "sequelize-typescript";
 
 @Table({
@@ -23,6 +22,11 @@ class User extends Model {
     type: DataType.STRING,
   })
   declare username: string;
+
+  @Column({
+    type: DataType.STRING,
+  })
+  declare email: string;
 
   @Column({
     type: DataType.STRING,
