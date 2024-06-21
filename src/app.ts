@@ -16,7 +16,7 @@ app.use("/v1/api", userRoute);
 /**
  * listen to port number
  */
-const PORT: number = 3000;
-app.listen(3000, () => {
+const PORT: number = 8000;
+app.listen(8000, () => {
   console.log("server started at", PORT);
 });

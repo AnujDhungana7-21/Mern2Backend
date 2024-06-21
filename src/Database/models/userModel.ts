@@ -1,9 +1,5 @@
-import {
-  Table,
-  Column,
-  Model,
-  DataType,
-} from "sequelize-typescript";
+import { Table, Column, Model, DataType } from "sequelize-typescript";
+import { toDefaultValue } from "sequelize/types/utils";
 
 @Table({
   tableName: "users",
@@ -25,6 +21,7 @@ class User extends Model {
 
   @Column({
     type: DataType.STRING,
+    unique: true,
   })
   declare email: string;
 
@@ -32,6 +29,16 @@ class User extends Model {
     type: DataType.STRING,
   })
   declare password: string;
+
+  @Column({
+    type: DataType.ENUM("customer", "admin"),
+    defaultValue: "customer",
+    allowNull: false,
+    validate: {
+      isIn: [["customer", "admin"]],
+    },
+  })
+  declare role: string;
 }
 
 export default User;
